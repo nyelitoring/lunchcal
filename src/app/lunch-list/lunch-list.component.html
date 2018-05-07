@@ -1,0 +1,24 @@
+<div style="text-align:center">
+  <h2 class="mat-display-4" style="font-size:10vw">
+    Upcoming Lunches
+
+  </h2>
+</div>
+<div style="display: block;margin-left:auto;margin-right:auto;width:50vw">
+
+  <div *ngFor="let lunch of lunches | async">
+
+
+    <mat-card style="margin-bottom:24px;">
+
+      <mat-card-title-group>
+        <mat-card-title>{{lunch.caterer}}</mat-card-title>
+        <mat-card-subtitle>{{lunch.date | date:'fullDate'}} <span *ngIf="lunch.comments">- {{lunch.comments}}</span></mat-card-subtitle>
+        <img mat-card-avatar [src]="lunch.image || '/assets/lunch_icon.png'" />
+
+      </mat-card-title-group>
+    </mat-card>
+
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+.admin-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.admin-full-width {
+  width: 100%;
+  padding-bottom: 20px;
+}
