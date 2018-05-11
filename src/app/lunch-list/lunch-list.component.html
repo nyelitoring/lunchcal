@@ -1,15 +1,15 @@
 <div style="text-align:center">
-  <h2 class="mat-display-4" style="font-size:10vw">
+  <h2 class="mat-display-4" style="font-size:10vw;margin-top:16px;">
     Upcoming Lunches
 
   </h2>
 </div>
 <div style="display: block;margin-left:auto;margin-right:auto;width:50vw">
 
-  <div *ngFor="let lunch of lunches | async">
+  <div *ngFor="let lunch of lunches | async | dateOrder" >
 
 
-    <mat-card style="margin-bottom:24px;">
+    <mat-card style="margin-bottom:24px;cursor:pointer;" (click)="goTo(lunch.link)">
 
       <mat-card-title-group>
         <mat-card-title>{{lunch.caterer}}</mat-card-title>

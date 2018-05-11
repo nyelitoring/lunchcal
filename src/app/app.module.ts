@@ -15,13 +15,15 @@ import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { DateOrderPipe } from './date-order.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LunchListComponent,
-    AdminComponent
+    AdminComponent,
+    DateOrderPipe
   ],
   imports: [
     BrowserModule,

@@ -22,28 +22,41 @@
       <mat-form-field class="admin-full-width">
         <input matInput placeholder="Image URL" value="" [(ngModel)]="newImage" name="URL">
       </mat-form-field>
+      <mat-form-field class="admin-full-width">
+        <input matInput placeholder="Caterer URL" value="" [(ngModel)]="newLink" name="Link">
+      </mat-form-field>
     </form>
 
-    <button [disabled]="!adminForm.form.valid" type="submit" form="lunch-form" mat-raised-button color="primary" >Add</button>
+    <div>
+      <span style="cursor: pointer;" *ngFor="let caterer of caterers | async" (click)="apply(caterer)">
+<mat-card style="margin-bottom:24px;width:100px;display:inline-flex;">
+    <span style="margin:4px;">  {{caterer.name}}</span>
+
+      <img class="caterer-image" [src]="caterer.image"  />
+</mat-card>
+    </span>
+    </div>
+    <button [disabled]="!adminForm.form.valid" type="submit" form="lunch-form" mat-raised-button color="primary" style="width:100%;">Add</button>
   </div>
 
   <br>
 
-  <div *ngFor="let lunch of lunches | async">
 
+  <div style="margin-top:100px;">
+    <div *ngFor="let lunch of lunches | async | dateOrder">
+      <mat-card style="margin-bottom:24px;">
 
-    <mat-card style="margin-bottom:24px;">
+        <mat-card-title-group>
+          <mat-card-title>{{lunch.payload.val().caterer}}</mat-card-title>
+          <mat-card-subtitle>{{lunch.payload.val().date | date:'fullDate'}} <span *ngIf="lunch.payload.val().comments">- {{lunch.payload.val().comments}}</span></mat-card-subtitle>
+          <img mat-card-avatar [src]="lunch.payload.val().image || '/assets/lunch_icon.png'" />
 
-      <mat-card-title-group>
-        <mat-card-title>{{lunch.payload.val().caterer}}</mat-card-title>
-        <mat-card-subtitle>{{lunch.payload.val().date | date:'fullDate'}} <span *ngIf="lunch.payload.val().comments">- {{lunch.payload.val().comments}}</span></mat-card-subtitle>
-        <img mat-card-avatar [src]="lunch.payload.val().image || '/assets/lunch_icon.png'" />
+          <button mat-raised-button color="warn" (click)="delete(lunch.key)">Delete</button>
 
-        <button  mat-raised-button color="warn" (click)="delete(lunch.key)">Delete</button>
+        </mat-card-title-group>
+      </mat-card>
 
-      </mat-card-title-group>
-    </mat-card>
-
+    </div>
   </div>
 
 </div>
