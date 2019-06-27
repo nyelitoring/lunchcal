@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { FirebaseListObservable } from "angularfire2/database-deprecated";
-import { Observable } from 'rxjs/Observable';
+import { Component} from '@angular/core';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs-compat/Observable';
 
 
 @Component({

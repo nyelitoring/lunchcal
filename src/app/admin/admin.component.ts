@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { FirebaseListObservable } from "angularfire2/database-deprecated";
-import { Observable } from 'rxjs/Observable';
+import { Component} from '@angular/core';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs-compat/Observable';
 import { NgForm } from '@angular/forms';
 
 
@@ -21,7 +20,7 @@ export class AdminComponent{
   newLink = "";
   db;
   dbRef;
-  dbName = "lunches"
+  dbName = "lunches";
   catererDbRef;
 
 
@@ -35,7 +34,7 @@ constructor(db: AngularFireDatabase){
 
 
 save(adminForm: NgForm){
-  this.dbRef.push({caterer: this.newCaterer, comments: this.newComments, image: this.newImage, date: this.newDate.getTime(), link: this.newLink})
+  this.dbRef.push({caterer: this.newCaterer, comments: this.newComments, image: this.newImage, date: this.newDate.getTime(), link: this.newLink});
   adminForm.reset();
 }
 
